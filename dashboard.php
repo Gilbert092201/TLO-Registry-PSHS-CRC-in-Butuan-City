@@ -18,7 +18,11 @@ $user = current_user();
 
 <header class="topbar">
   <div class="topbar-brand">
-    <img src="assets/img/logo.png" alt="PSHS Caraga Region Campus Logo" class="seal-svg seal-svg-sm">
+    <svg viewBox="0 0 120 120" class="seal-svg seal-svg-sm" aria-hidden="true">
+      <circle cx="60" cy="60" r="56" class="seal-ring"></circle>
+      <circle cx="60" cy="60" r="44" class="seal-ring-inner"></circle>
+      <path d="M60 26 L72 50 L98 54 L79 72 L84 98 L60 85 L36 98 L41 72 L22 54 L48 50 Z" class="seal-star"></path>
+    </svg>
     <div class="topbar-titles">
       <p class="topbar-eyebrow">Philippine Science High School &mdash; Caraga Region Campus, Butuan City</p>
       <h1>Technology Licensing Office Registry</h1>
@@ -43,10 +47,6 @@ $user = current_user();
     </div>
     <form id="filterForm" class="filter-grid">
       <label class="field field-sm">
-        <span>Employee No.</span>
-        <input type="text" name="employee_number" placeholder="Any">
-      </label>
-      <label class="field field-sm">
         <span>Month</span>
         <select name="entry_month">
           <option value="">Any</option>
@@ -56,45 +56,8 @@ $user = current_user();
         </select>
       </label>
       <label class="field field-sm">
-        <span>Day</span>
-        <select name="entry_day">
-          <option value="">Any</option>
-          <?php foreach (range(1,31) as $d): ?>
-            <option value="<?= $d ?>"><?= $d ?></option>
-          <?php endforeach; ?>
-        </select>
-      </label>
-      <label class="field field-sm">
         <span>Year</span>
         <input type="number" name="entry_year" placeholder="e.g. 2026" min="2000" max="2100">
-      </label>
-      <label class="field field-sm">
-        <span>IP Name</span>
-        <input type="text" name="ip_name" placeholder="Any">
-      </label>
-      <label class="field field-sm">
-        <span>Application No.</span>
-        <input type="text" name="application_number" placeholder="Any">
-      </label>
-      <label class="field field-sm">
-        <span>Application Code</span>
-        <input type="text" name="application_code" placeholder="Any">
-      </label>
-      <label class="field field-sm">
-        <span>Status</span>
-        <select name="status_of_application">
-          <option value="">Any</option>
-          <?php foreach (STATUS_OPTIONS as $s): ?>
-            <option value="<?= htmlspecialchars($s) ?>"><?= htmlspecialchars($s) ?></option>
-          <?php endforeach; ?>
-        </select>
-      </label>
-      <label class="field field-sm">
-        <span>Amount Paid</span>
-        <div class="range-pair">
-          <input type="number" step="0.01" name="amount_min" placeholder="Min">
-          <input type="number" step="0.01" name="amount_max" placeholder="Max">
-        </div>
       </label>
       <label class="field field-sm">
         <span>IP Type</span>
@@ -114,9 +77,14 @@ $user = current_user();
           <?php endforeach; ?>
         </select>
       </label>
-      <label class="field field-sm field-wide">
-        <span>Title of IP</span>
-        <input type="text" name="title_of_ip" placeholder="Any">
+      <label class="field field-sm">
+        <span>Status</span>
+        <select name="status_of_application">
+          <option value="">Any</option>
+          <?php foreach (STATUS_OPTIONS as $s): ?>
+            <option value="<?= htmlspecialchars($s) ?>"><?= htmlspecialchars($s) ?></option>
+          <?php endforeach; ?>
+        </select>
       </label>
       <div class="field field-sm field-action">
         <button type="submit" class="btn btn-primary btn-block">Apply filters</button>
